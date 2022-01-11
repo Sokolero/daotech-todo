@@ -15,3 +15,65 @@ html {
   font-size: 16px;
   line-height: normal;
 }
+
+.wrapper {
+  height: 100vh;
+}
+
+.container {
+  padding: 0 20px;
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  height: calc(100% - 96px);
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  grid-gap: 1.0rem;
+}
+
+.header {
+  height: 80px;
+  margin-bottom: 1rem;
+  background-color: green;
+}
+
+.aside {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  padding-top: 20px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+  grid-column-start: 3;
+  grid-column-end: 13;
+  padding: 20px 20px;
+
+  font-size: 1.4rem;
+
+  background-image: url(../public/image/lake.jpg);
+
+  .task-container {
+    background-color: #fff;
+
+    &__filters {
+      margin-bottom: 1rem;
+      width: 100%;
+    }
+  }
+
+  .note-container {
+    padding: 25px 25px;
+    background-color: #fff;
+  }
+}
+
+.plus {
+  color: yellow;
+  font-size: 1.5rem;
+  margin-right: 10px;
+}
