@@ -5,8 +5,13 @@
 
 // ---- Normalize.css -------------------
 @import url(normalize.css);
-@import "components";
 
 * {
   box-sizing: border-box;
+}
+
+html {
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: normal;
 }
