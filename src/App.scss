@@ -59,7 +59,7 @@ html {
 
   font-size: 1.4rem;
 
-  background-image: url(../public/image/lake.jpg);
+  background-image: url(../public/image/bg-image.jpg);
 
   .task-container {
     background-color: #fff;
@@ -80,10 +80,48 @@ html {
       &__item {
         margin-bottom: 8px;
         border-radius: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+
+        input, label {
+          display: inline-block;
+          margin-right: 12px;
+          margin-top: 0;
+        }
+
+        label {
+          padding: 4px 18px;
+        }
+
+        label:hover {
+          border-radius: 20px;
+          background-color: #d9dea2;
+        }
+      }
+
+      &__item--isdone {
+        background-color: #AFE3BA;
       }
 
       &__item:hover {
-        background-color: grey;
+        background-color: #DEDFE3;
+      }
+
+      &__item:hover label {
+        font-weight: 600;
+        color: black;
+      }
+    }
+
+    .remove-task {
+      display: inline-block;
+      margin-left: auto;
+      margin-right: 0;
+
+      .sv:hover {
+        color: red;
+        width: 24px;
+        height: 24px;
       }
     }
   }

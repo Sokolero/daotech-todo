@@ -16,7 +16,6 @@ const ModalTaskForm = (props) => {
   const tasks = useSelector((state) => state.tasks);
   const modalTaskForm = useSelector((state) => state.modalTaskForm);
   const isValidLength = useSelector((state) => state.modalTaskForm.isValidLength);
-  console.log(isValidLength);
 
   // --- define className valid/ invalid modificator --------------------------
   const titleClassName = classNames({
@@ -32,7 +31,6 @@ const ModalTaskForm = (props) => {
   // --- handler to add a task in the state and localStorage ------------------
   function createTask(e) {
     e.preventDefault();
-    const storage = window.localStorage;
 
     if (modalTaskForm.isValidLength) {
       const newTask = {
@@ -46,17 +44,7 @@ const ModalTaskForm = (props) => {
         type: "create_task",
         payload: newTask,
       });
-
-      if (!storage.tasks) {
-        storage.setItem("tasks", JSON.stringify([ newTask ]));
-      } else {
-        storage.setItem("tasks", JSON.stringify([ ...tasks, newTask ]));
-      }
       dispatch({ type: "toggleModalTaskForm" });
-    } else {
-      dispatch({
-        type: "invalid_length"
-      });
     }
   }
 

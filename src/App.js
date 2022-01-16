@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import * as _ from "lodash";
 
 import ButtonGroup from "react-bootstrap/ButtonGroup";
 import Button from "react-bootstrap/Button";
@@ -7,18 +8,29 @@ import Button from "react-bootstrap/Button";
 import TaskContainer from "./components/TaskContainer";
 import TaskList from "./components/TaskList";
 import ModalTaskForm from "./components/ModalTaskForm";
+import TaskCounter from "./components/TaskCounter";
 
 import "./App.scss";
 
+
+
+// ==== App component =========================================================
 const App = (props) => {
 
   const modalTaskForm = useSelector((state) => state.modalTaskForm);
-  const task = useSelector((state) => state.tasks);
+  const tasks = useSelector((state) => state.tasks);
+  const displayedTask = useSelector((state) => state.displayedTask);
   const dispatch = useDispatch();
 
   function toggleModalTaskForm(){
     dispatch({ type: "toggleModalTaskForm" });
   }
+
+  useEffect(() => {
+    const storage = window.localStorage;
+    storage.setItem('tasks', JSON.stringify(tasks));
+    // console.log(displayedTask)
+  });
 
   return(
     <div className="wrapper">
@@ -32,12 +44,14 @@ const App = (props) => {
             <span className="plus">+</span>
             <span className="btn-text">Create Task</span>
           </button>
+          <TaskCounter />
         </aside>
         <main className="main bg-primary rounded-3 text-secondary">
           <TaskContainer />
           <div className="note-container">
-            <h3 className="note__title">Комментарий к задаче Task 1</h3>
-            <p className="note__text">Срочно, звонить можно во вторник</p>
+            <h3 className="note__title">{ displayedTask.title || "Нажмите на задачу для просмотра деталей" }</h3>
+            <hr></hr>
+            <p className="note__text">{ displayedTask.note || null}</p>
           </div>
         </main>
       </div>

@@ -12,8 +12,8 @@ import App from "./App.js"
 const initialState = {
   tasks: [], // { id, title, note, isDone }
   activeFilter: "all", // all, incomplete, done
-  createTaskForm: "hidden", // show, hidden
   activeTask: null,
+  displayedTask: {},
   modalTaskForm: {
     visibility: false,
     isValidLength: true,
@@ -60,6 +60,19 @@ const reducer = (state, action) => {
 
     case "create_task":
       return { ...state, tasks: [ ...state.tasks, action.payload ] }
+
+    case "remove_task":
+      return {
+        ...state,
+        tasks: state.tasks.filter((task) => task.id !== action.payload.id),
+        displayedTask: {},
+      }
+
+    case "display_task":
+      return {
+        ...state,
+        displayedTask: action.payload.task
+      }
 
     case "task_is_done_or_undone":
       return {

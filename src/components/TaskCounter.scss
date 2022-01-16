@@ -1,0 +1,15 @@
+.task-counter {
+  font-weight: 600;
+  font-size: 22px;
+  text-align: center;
+
+  &--done {
+    color: #2b5c2d;
+    font-size: 32px;
+  }
+
+  &--all {
+    color: #9c0e0e;
+    font-size: 32px;
+  }
+}
