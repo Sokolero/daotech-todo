@@ -81,6 +81,10 @@ html {
         margin-bottom: 8px;
         border-radius: 5px;
       }
+
+      &__item:hover {
+        background-color: grey;
+      }
     }
   }
 
